@@ -1,10 +1,23 @@
+/////// normalize
+html,
+body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+////////////////////////////////////////
+///// speed variables and color
 $box_color: hsl(216, 100%, 50%, 0.5);
 $ball_color: hsl(0, 0%, 100%);
 
 $rotate_speed: 30s;
 $bounce_speed: 2s;
 
-body {
+//////////////////////////////////////
+.page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +32,7 @@ body {
 }
 
 .scene {
-  position: relative;
+  position: absolute;
   transform-style: preserve-3d;
   animation: scene_rotate $rotate_speed infinite linear;
 }
@@ -41,11 +54,11 @@ body {
   background-color: $ball_color;
   background-image: radial-gradient(circle at top, lightblue, 70%, #000);
 
-  animation: ball_bouncs $bounce_speed infinite ease-out,
+  animation: ball_bounces $bounce_speed infinite ease-out,
     scene_rotate $rotate_speed infinite linear reverse;
 }
 
-@keyframes ball_bouncs {
+@keyframes ball_bounces {
   0%,
   100% {
     bottom: 0.5em;
@@ -80,68 +93,149 @@ body {
 }
 
 .cube {
-  width: 2em;
-  height: 2em;
+  // width: 20rem;
+  // height: 20rem;
   // background-color: $box_color;
+  // position: absolute;
+  // bottom: -1em;
+  // left: -1em;
+  // animation: cube_animation $bounce_speed infinite ease-out;
+}
 
+.front {
+  width: 20rem;
+  height: 20rem;
+  background-color: $box_color;
   position: absolute;
   bottom: -1em;
   left: -1em;
-
-  & .left,
-  & .right,
-  & .front,
-  & .back {
-    background-color: $box_color;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 0.5em #000a inset;
-  }
-
-  & .front {
-    transform: translateZ(1em);
-  }
-  & .right {
-    transform: rotateY(90deg) translateZ(1em);
-  }
-  & .left {
-    transform: rotateY(270deg) translateZ(1em);
-  }
-  & .back {
-    transform: rotateY(180deg) translateZ(1em);
-  }
-
-  & .top {
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    background-color: $box_color;
-    transform: translateY(-50%) rotateX(90deg);
-    box-shadow: 0 0 0.5em #000a inset;
-  }
-
-  & .bottom {
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    background-color: #0007;
-    transform: translateY(50%) rotateX(90deg);
-    bottom: 0;
-    box-shadow: 0 0 0.5em #000a;
-  }
+  // transform: translate3d();
+  transform: translateZ(1em);
   animation: cube_animation $bounce_speed infinite ease-out;
 }
+.back {
+  width: 20rem;
+  height: 20rem;
+  background-color: $box_color;
+  position: absolute;
+  bottom: -1em;
+  left: -1em;
+  // transform: translate3d();
+  transform: rotateY(180deg) translateZ(1em);
+  animation: cube_animation $bounce_speed infinite ease-out;
+}
+.left {
+  width: 20rem;
+  height: 20rem;
+  background-color: $box_color;
+  position: absolute;
+  bottom: -1em;
+  left: -1em;
+  // transform: translate3d();
+  transform: rotateY(270deg) translateZ(1em);
+  animation: cube_animation $bounce_speed infinite ease-out;
+}
+
+.right {
+  width: 20rem;
+  height: 20rem;
+  background-color: $box_color;
+  position: absolute;
+  bottom: -1em;
+  left: -1em;
+  // transform: translate3d();
+  transform: rotateY(90deg) translateZ(1em);
+  animation: cube_animation $bounce_speed infinite ease-out;
+}
+// .top {
+//   width: 20rem;
+//   height: 20rem;
+//   // background-color: $box_color;
+//   background-color: hsl(216, 100%, 50%, 0.25);
+
+//   position: absolute;
+//   bottom: -1em;
+//   left: -1em;
+//   // transform: translate3d();
+//   transform: rotateX(90deg) rotateY(0deg) translateZ(1em);
+//   // animation: cube_animation $bounce_speed infinite ease-out;
+// }
+.bottom {
+  width: 20rem;
+  height: 20rem;
+  background-color: hsl(216, 100%, 50%, 0.3);
+  // background-color: red;
+  position: absolute;
+  bottom: -29.9rem;
+  left: -1em;
+  // transform: translate3d();
+  transform: rotateX(90deg) rotateY(0deg) translateZ(1em);
+  // animation: cube_animation $bounce_speed infinite ease-out;
+}
+
+// .cube {
+//   width: 2em;
+//   height: 2em;
+//   // background-color: $box_color;
+
+//   position: absolute;
+//   bottom: -1em;
+//   left: -1em;
+
+//   & .left,
+//   & .right,
+//   & .front,
+//   & .back {
+//     background-color: $box_color;
+//     // position: relative;
+//     width: 100%;
+//     height: 100%;
+//     box-shadow: 0 0 0.5em #000a inset;
+//   }
+
+//   & .front {
+//     transform: translateZ(1em);
+//   }
+//   & .right {
+//     transform: rotateY(90deg) translateZ(1em);
+//   }
+//   & .left {
+//     transform: rotateY(270deg) translateZ(1em);
+//   }
+//   & .back {
+//     transform: rotateY(180deg) translateZ(1em);
+//   }
+
+//   & .top {
+//     // position: absolute;
+//     width: 2em;
+//     height: 2em;
+//     background-color: $box_color;
+//     transform: translateY(-50%) rotateX(90deg);
+//     box-shadow: 0 0 0.5em #000a inset;
+//   }
+
+//   & .bottom {
+//     position: absolute;
+//     width: 2em;
+//     height: 2em;
+//     background-color: #0007;
+//     transform: translateY(50%) rotateX(90deg);
+//     bottom: 0;
+//     box-shadow: 0 0 0.5em #000a;
+//   }
+//   animation: cube_animation $bounce_speed infinite ease-out;
+// }
 
 @keyframes cube_animation {
   0%,
   100% {
-    height: 1.5em;
+    height: 15rem;
   }
 
   8%,
   93.5% {
-    height: 2em;
+    height: 20rem;
   }
 }
 
